@@ -8,6 +8,15 @@ Atualizar o moduloPHPPDV no Ubuntu 22 e desativar o path_comum Assincrono.
 
 Clonar o repositório e executar o Script `run.sh`
 ___
+## Atualizar o moduloPHPPDV
+
+Edite o arquivo `atualizamodulo.sh` e adicione o usuário e senha do docker no mesmo, salve e saia do arquivo.
+Após a edição, faça:
+
+```bash
+bash atualizamodulo.sh
+````
+___
 ## Apenas desativar o path_comum
 
 Se for apenas desativar o path_comum, não precisa baixar o repositório completo.
