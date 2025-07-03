@@ -59,8 +59,7 @@ fi
 echo "Atualizando os containers..."
 cd "$DIRMOD"
 >php_errors.log
-docker network inspect zanthus-network >/dev/null 2>&1 || \
-docker network create zanthus-network
+docker network inspect zanthus-network >/dev/null 2>&1 || docker network create zanthus-network
 docker-compose up -d
 
 
