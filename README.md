@@ -2,7 +2,7 @@
 
 - Descrição:
 
-Atualizar o moduloPHPPDV no Ubuntu 22 e desativar o path_comum Assincrono.
+Atualizar o **moduloPHPPDV** no Ubuntu 22 e desativar o **path_comum Assincrono**.
 
 - Como usar:
 
