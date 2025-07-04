@@ -6,12 +6,19 @@ Atualizar o **moduloPHPPDV** no Ubuntu 22 e desativar o **path_comum Assincrono*
 
 - Como usar:
 
-Clonar o repositório e executar o Script `run.sh`
+Clonar o repositório;  
+Copie o arquivo `móduloPHPPDV_{VERSAO}_php_8_1.zip` para o diretório `atualizamodulo`;  
+Execute o Script `run.sh`, coloque o usuário e a senha do Docker quando pedir.  
+
+```bash
+bash run.sh
+````
+
 ___
 ## Atualizar o moduloPHPPDV
 
 Copie o arquivo `móduloPHPPDV_{VERSAO}_php_8_1.zip` para o diretório `atualizamodulo`.  
-Execute o Script, coloque o usuário e a senha do Docker quando pedir.  
+Execute o Script `atualizamodulo.sh`, coloque o usuário e a senha do Docker quando pedir.  
 
 ```bash
 bash atualizamodulo.sh
