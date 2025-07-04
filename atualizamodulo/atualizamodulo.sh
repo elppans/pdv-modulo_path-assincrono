@@ -7,11 +7,23 @@
 
 LOC="$(pwd)"
 DATE="$(date +%d%m%Y)"
-DOCKER_USER="usuario_docker"
-DOCKER_PASS="senha_docker"
 DIRMOD="/Zanthus/Zeus/pdvJava/GERAL/SINCRO/WEB/moduloPHPPDV"
 YML="$DIRMOD/docker-compose.yml"
 PDVIP="$(ifconfig eth0 | grep "inet " | awk '{print $2}')"
+
+echo -e "Realizando login no Docker...\n"
+read -p "Digite seu usuário Docker: " DOCKER_USER
+read -s -p "Digite sua senha Docker: " DOCKER_PASS
+echo ""
+
+echo "$DOCKER_PASS" | docker login --username "$DOCKER_USER" --password-stdin
+
+# Opcional: verificar se o login foi bem-sucedido
+if [ $? -eq 0 ]; then
+    echo "Login realizado com sucesso!"
+else
+    echo "Falha no login."
+fi
 
 cd /home/zanthus/
 docker rm -f $(docker ps -aq)
@@ -21,14 +33,7 @@ rm -rf "$DIRMOD"/moduloPHPPDV*
 cp -av "$LOC"/moduloPHPPDV* "$DIRMOD"/moduloPHPPDV.zip
 unzip -o "$DIRMOD"/moduloPHPPDV.zip -d "$DIRMOD"
 
-echo "Realizando login no Docker..."
-echo "$DOCKER_PASS" | docker login --username "$DOCKER_USER" --password-stdin
 
-
-if [ $? -ne 0 ]; then
-    echo "Erro: Falha no login do Docker. Verifique as credenciais."
-    exit 1
-fi
 
 if [ ! -f "$YML" ]; then
 echo -e '#*********MODULOPHPPDV********* 
