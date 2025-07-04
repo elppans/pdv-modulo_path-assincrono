@@ -10,8 +10,8 @@ Clonar o repositório e executar o Script `run.sh`
 ___
 ## Atualizar o moduloPHPPDV
 
-Edite o arquivo `atualizamodulo.sh` e adicione o usuário e senha do docker no mesmo, salve e saia do arquivo.
-Após a edição, faça:
+Copie o arquivo `móduloPHPPDV_{VERSAO}_php_8_1.zip` para o diretório `atualizamodulo`.  
+Execute o Script, coloque o usuário e a senha do Docker quando pedir.  
 
 ```bash
 bash atualizamodulo.sh
