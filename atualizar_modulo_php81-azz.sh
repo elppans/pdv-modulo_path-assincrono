@@ -10,12 +10,12 @@ cd "$path_trab"
 
 docker stop "$DOCMOD"
 
-if [[ -n "$ZTAR" ]]; then
-    echo "Extraindo arquivo: $ZTAR"
-    7z x "$ZTAR" -o"$path_trab" -y
-elif [[ -n "$PURO_ZTAR" ]]; then
+if [[ -n "$PURO_ZTAR" ]]; then
     echo "Extraindo arquivo: $PURO_ZTAR"
     7z x "/Zanthus/Zeus/pdvJava/PATINTER/ATUVER/$PURO_ZTAR" -o"$path_trab" -y
+elif [[ -n "$ZTAR" ]]; then
+    echo "Extraindo arquivo: $ZTAR"
+    7z x "$ZTAR" -o"$path_trab" -y
 elif [[ -n "$ATUAL" ]]; then
     echo "Extraindo arquivo: $ATUAL"
     7z x /Zanthus/Zeus/pdvJava/PATINTER/ATUVER/MDL__"$ATUAL"__php_8_1.AZZ -o"$path_trab" -y
