@@ -11,11 +11,18 @@ DIRMOD="/Zanthus/Zeus/pdvJava/GERAL/SINCRO/WEB/moduloPHPPDV"
 YML="$DIRMOD/docker-compose.yml"
 PDVIP="$(ifconfig eth0 | grep "inet " | awk '{print $2}')"
 
-echo -e "Realizando login no Docker...\n"
-read -p "Digite seu usuário Docker: " DOCKER_USER
-read -s -p "Digite sua senha Docker: " DOCKER_PASS
-echo ""
+DOCKER_USER=""
+DOCKER_PASS=""
 
+# Se as variáveis estiverem vazias, pede login
+if [ -z "$DOCKER_USER" ] || [ -z "$DOCKER_PASS" ]; then
+    echo -e "Realizando login no Docker...\n"
+    read -p "Digite seu usuário Docker: " DOCKER_USER
+    read -s -p "Digite sua senha Docker: " DOCKER_PASS
+    echo ""
+fi
+
+echo "Acessando Docker..."
 echo "$DOCKER_PASS" | docker login --username "$DOCKER_USER" --password-stdin
 
 # Opcional: verificar se o login foi bem-sucedido
@@ -23,17 +30,18 @@ if [ $? -eq 0 ]; then
     echo "Login realizado com sucesso!"
 else
     echo "Falha no login."
+    exit 1
 fi
 
+echo "Forçando parada do Docker..."
 cd /home/zanthus/
 docker rm -f $(docker ps -aq)
 
+echo "Atualizando moduloPHPPDV..."
 rm -rf /Zanthus/Zeus/path_comum_temp/*
 rm -rf "$DIRMOD"/moduloPHPPDV*
 cp -av "$LOC"/moduloPHPPDV* "$DIRMOD"/moduloPHPPDV.zip
 unzip -o "$DIRMOD"/moduloPHPPDV.zip -d "$DIRMOD"
-
-
 
 if [ ! -f "$YML" ]; then
 echo -e '#*********MODULOPHPPDV********* 
